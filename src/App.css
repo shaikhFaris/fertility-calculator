@@ -1,0 +1,21 @@
+#hero-box{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.react-calendar {
+    border: none !important;
+    /* background-color:red  !important; */
+    /* background-color: #; */
+}
+
+.Pday {
+background-color: white !important;
+color: black !important;
+border: 2px solid red !important;
+/* border-radius: 50%; */
+}
+
+.NormalDays{
+background-color: white !important;
+color: black !important;
+
+}
