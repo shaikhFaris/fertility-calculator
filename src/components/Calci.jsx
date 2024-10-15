@@ -6,68 +6,43 @@ import "react-calendar/dist/Calendar.css";
 const Calci = () => {
   const [displayResultsOrNot, setdisplayResultsOrNot] = useState(false);
   const [day, setday] = useState(25);
+  const [data, setData] = useState(null);
+  const [Currdata, setCurrData] = useState(null);
   const [Check, setCheck] = useState(false);
   const [Pday, setPday] = useState(0);
   const [Pmonth, setPmonth] = useState("");
 
-  const currMonth = new Date();
-  const nxtMonth = new Date(
-    currMonth.getFullYear(),
-    currMonth.getMonth() + 1,
-    1
-  );
+  const year = [
+    { name: "Jan", days: 31 },
+    { name: "Feb", days: 28 },
+    { name: "Mar", days: 31 },
+    { name: "Apr", days: 30 },
+    { name: "May", days: 31 },
+    { name: "Jun", days: 30 },
+    { name: "Jul", days: 31 },
+    { name: "Aug", days: 31 },
+    { name: "Sep", days: 30 },
+    { name: "Oct", days: 31 },
+    { name: "Nov", days: 30 },
+    { name: "Dec", days: 31 },
+    { name: "Jan", days: 31 },
+  ];
 
   const HandleCalenderChange = (e) => {
-    // console.log(e);
-    // console.log(e.toString().slice(4, 7));
-    // console.log(e.toString().slice(8, 10));
+    console.log(e.getMonth());
     setPday(e.toString().slice(8, 10));
-    setPmonth(e.toString().slice(4, 7));
+    setPmonth(e.getMonth());
   };
 
   const handleDrop = (e) => {
-    console.log(e.target.value);
-    setday(e.target.value);
+    console.log("days= " + e.target.value);
+    setday(parseInt(e.target.value));
   };
 
   const HandleSubmit = (e) => {
     e.preventDefault();
     setdisplayResultsOrNot(true);
-  };
-
-  const tileClassNameFunc1 = (e) => {
-    // console.log(e);
-
-    if (Check == true) {
-      if (
-        e.date.toString().slice(4, 7) == Pmonth &&
-        e.date.toString().slice(8, 10) == Pday
-      ) {
-        // console.log(e.date);
-        return "Pday";
-      }
-      if (
-        e.date.toString().slice(4, 7) == Pmonth &&
-        e.date.toString().slice(8, 10) == parseInt(Pday) + parseInt(day)
-      ) {
-        // console.log(e.date);
-        return "Pday";
-      }
-
-      return "NormalDays";
-    }
-  };
-  const tileClassNameFunc2 = (e) => {
-    if (Check == true) {
-      if (
-        e.date.toString().slice(8, 10) == parseInt(Pday) + parseInt(day) - 31 ||
-        e.date.toString().slice(8, 10) == parseInt(Pday) + parseInt(day) - 30
-      ) {
-        // console.log(e.date);
-        return "Pday";
-      }
-      return "NormalDays";
-    }
+    setCheck(false);
   };
 
   useEffect(() => {
@@ -75,6 +50,53 @@ const Calci = () => {
       setCheck(true);
     }
   }, [Pday]);
+
+  const periodDate = () => {
+    if (parseInt(Pday) + parseInt(day) > year[Pmonth].days) {
+      return `${parseInt(Pday) + parseInt(day) - year[Pmonth].days} ${
+        year[Pmonth + 1].name
+      }`;
+    } else {
+      console.log(parseInt(Pday) + parseInt(day));
+
+      return `${parseInt(Pday) + parseInt(day)} ${year[Pmonth].name}`;
+    }
+  };
+  const pregnancyTestDate = () => {
+    if (parseInt(Pday) + parseInt(day) + 1 > year[Pmonth].days) {
+      return `${parseInt(Pday) + parseInt(day) + 1 - year[Pmonth].days} ${
+        year[Pmonth + 1].name
+      }`;
+    } else {
+      console.log(parseInt(Pday) + parseInt(day));
+
+      return `${parseInt(Pday) + parseInt(day) + 1} ${year[Pmonth].name}`;
+    }
+  };
+  const ovulationDate = () => {
+    if (parseInt(Pday) + (parseInt(day) - 14) > year[Pmonth].days) {
+      return `${parseInt(Pday) + (parseInt(day) - 14) - year[Pmonth].days} ${
+        year[Pmonth + 1].name
+      }`;
+    } else {
+      // console.log(parseInt(Pday) + parseInt(day));
+
+      return `${parseInt(Pday) + (parseInt(day) - 14)} ${year[Pmonth].name}`;
+    }
+  };
+  const fertileDate = () => {
+    if (parseInt(Pday) + (parseInt(day) - 19) > year[Pmonth].days) {
+      return `${parseInt(Pday) + (parseInt(day) - 19) - year[Pmonth].days} ${
+        year[Pmonth + 1].name
+      } - ${ovulationDate()}`;
+    } else {
+      // console.log(parseInt(Pday) + parseInt(day));
+
+      return `${parseInt(Pday) + (parseInt(day) - 19)} ${
+        year[Pmonth].name
+      } - ${ovulationDate()}`;
+    }
+  };
 
   return (
     <>
@@ -97,7 +119,7 @@ const Calci = () => {
             <select
               name="days"
               id="days"
-              className="w-full h-16 text-red-500 font-medium border border-red-500 p-4 rounded-lg"
+              className="w-full h-20 text-red-500 font-medium border border-red-500 p-4 rounded-lg"
               onChange={handleDrop}
             >
               <option value="25">25 days</option>
@@ -106,11 +128,6 @@ const Calci = () => {
               <option value="28">28 days</option>
               <option value="29">29 days</option>
               <option value="30">30 days</option>
-              <option value="31">31 days</option>
-              <option value="32">32 days</option>
-              <option value="33">33 days</option>
-              <option value="34">34 days</option>
-              <option value="35">35 days</option>
             </select>
             <div className="w-full flex justify-center">
               {Check ? (
@@ -144,16 +161,22 @@ const Calci = () => {
             <p className="ml-1 text-md font-semibold text-black mb-3 ">
               Here are the results :
             </p>
-            <Calendar
-              className="mb-5"
-              tileClassName={tileClassNameFunc1}
-              value={new Date()}
-            />
-            <Calendar
-              className="mb-5"
-              tileClassName={tileClassNameFunc2}
-              value={nxtMonth}
-            />
+            <div className="bg-blue-300 mb-3 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center  pl-2 pr-2 rounded-lg">
+              Fertility Window
+              <p className="text-sm text-black">{fertileDate()}</p>
+            </div>
+            <div className="bg-green-300 mb-3 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center pl-2 pr-2 rounded-lg">
+              Approximate ovulation
+              <p className="text-sm text-black">{ovulationDate()}</p>
+            </div>
+            <div className="bg-pink-300 mb-3 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center  pl-2 pr-2 rounded-lg">
+              Next Period
+              <p className="text-sm text-black">{periodDate()}</p>
+            </div>
+            <div className="bg-yellow-200 mb-8 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center pl-2 pr-2 rounded-lg ">
+              Pregnancy Test Day
+              <p className="text-sm text-black">{pregnancyTestDate()}</p>
+            </div>
           </div>
         )}
       </div>
