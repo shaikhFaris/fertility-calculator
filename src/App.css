@@ -18,3 +18,31 @@ border: 2px solid red !important;
 background-color: white !important;
 color: black !important;
 }
+
+.slick-slide.slick-current .cards {
+    /* background-color: rgb(245, 151, 167); */
+    /* opacity: 1; */
+    transition: opacity 0.3 ease;
+    /* border: 3px solid red; Change border for selected card */
+    transform: scale(1.4); /* Slightly enlarge the selected card */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.balls{
+font-size: 13px;
+font-weight: 500;
+opacity: 0.5;
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.slick-slide.slick-current .balls{
+    opacity: 1;
+}
+.slick-track{
+    height: 150px;
+    padding-top: 25px;
+    /* border: 1px solid black; */
+}
+.slick-list{
+    height: 150px;
+    /* border: 1px solid black; */
+}
