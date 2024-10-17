@@ -24,6 +24,7 @@ const Calci = () => {
     slidesToShow: 3,
     draggable: true,
     speed: 200,
+    initialSlide: 3,
     easing: "ease-in-out",
     focusOnSelect: true,
     dots: false,
@@ -79,6 +80,17 @@ const Calci = () => {
   }, [Pday]);
 
   const periodDate = () => {
+    if (
+      parseInt(Pday) + parseInt(day) >
+      year[Pmonth].days + year[Pmonth + 1].days
+    ) {
+      return `${
+        parseInt(Pday) +
+        parseInt(day) -
+        year[Pmonth].days -
+        year[Pmonth + 1].days
+      } ${year[Pmonth + 2].name}`;
+    }
     if (parseInt(Pday) + parseInt(day) > year[Pmonth].days) {
       return `${parseInt(Pday) + parseInt(day) - year[Pmonth].days} ${
         year[Pmonth + 1].name
@@ -90,6 +102,18 @@ const Calci = () => {
     }
   };
   const pregnancyTestDate = () => {
+    if (
+      parseInt(Pday) + parseInt(day) + 1 >
+      year[Pmonth].days + year[Pmonth + 1].days
+    ) {
+      return `${
+        parseInt(Pday) +
+        parseInt(day) -
+        year[Pmonth].days -
+        year[Pmonth + 1].days +
+        1
+      } ${year[Pmonth + 2].name}`;
+    }
     if (parseInt(Pday) + parseInt(day) + 1 > year[Pmonth].days) {
       return `${parseInt(Pday) + parseInt(day) + 1 - year[Pmonth].days} ${
         year[Pmonth + 1].name
@@ -146,59 +170,115 @@ const Calci = () => {
                 <p className="ml-1 text-md font-semibold text-black mb-3 ">
                   How long is your cycle ?
                 </p>
-                {/* <select
-                  name="days"
-                  id="days"
-                  className="w-full h-20 text-red-500 font-medium border border-red-500 p-4 rounded-lg"
-                  onChange={handleDrop}
-                >
-                  <option value="25">25 days</option>
-                  <option value="26">26 days</option>
-                  <option value="27">27 days</option>
-                  <option value="28">28 days</option>
-                  <option value="29">29 days</option>
-                  <option value="30">30 days</option>
-                </select> */}
+
                 <Slider
                   {...settings}
                   className="mt-1"
                   afterChange={handleAfterChange}
                 >
                   <div className="h-[88px] cards p-1">
-                    {/* <h3>1</h3> */}
                     <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
                       25 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    {/* <h3>2</h3> */}
                     <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
                       26 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    {/* <h3>3</h3> */}
                     <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
                       27 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    {/* <h3>4</h3> */}
                     <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
                       28 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    {/* <h3>5</h3>
-                     */}
                     <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
                       29 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    {/* <h3>6</h3> */}
                     <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
                       30 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      31 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      32 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      33 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      34 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      35 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      36 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      37 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      38 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      39 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      40 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      41 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      42 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      43 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      44 Days
+                    </div>
+                  </div>
+                  <div className="h-[88px] cards p-1">
+                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                      45 Days
                     </div>
                   </div>
                 </Slider>
@@ -243,7 +323,7 @@ const Calci = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-7 pl-3 pr-3 mb-20">
+      <div className="flex justify-center mt-7 pl-3 pr-3 mb-10">
         {displayResultsOrNot && (
           <div className="w-full  rounded-xl p-2 duration-1000" id="hero-box">
             <h2 className="font-medium text-gray-400 text-lg mt-1">
@@ -274,6 +354,22 @@ const Calci = () => {
           </div>
         )}
       </div>
+
+      {/* Graph-div */}
+      {/* <div className="flex justify-center mt-0 pl-3 pr-3 mb-20">
+        {true && (
+          <div className="w-full  rounded-xl p-2 duration-1000" id="hero-box">
+            <h2 className="font-medium text-gray-400 text-lg mt-1">
+              OVERVIEW GRAPH
+            </h2>
+            <h1 className="text-3xl font-semibold text-blue-700 mb-3">GRAPH</h1>
+            <p className="ml-1 text-md font-semibold text-black mb-3 ">
+              This graph can give you a more clearer understanding for your
+              cycle.
+            </p>
+          </div>
+        )}
+      </div> */}
     </>
   );
 };
