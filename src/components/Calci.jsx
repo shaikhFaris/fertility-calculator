@@ -6,12 +6,34 @@ import { FaEdit } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Line } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+// Register components
+ChartJS.register(
+  ChartDataLabels,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Calci = () => {
   const [displayResultsOrNot, setdisplayResultsOrNot] = useState(false);
-  const [day, setday] = useState(25);
-  const [data, setData] = useState(null);
-  const [Currdata, setCurrData] = useState(null);
+  const [day, setday] = useState(28);
+
   const [CheckBtn, setCheckBtn] = useState(false);
   const [CheckCalender, setCheckCalender] = useState(true);
   const [Pday, setPday] = useState(0);
@@ -57,10 +79,6 @@ const Calci = () => {
     setPmonth(e.getMonth());
   };
 
-  // const handleDrop = (e) => {
-  //   console.log("days= " + e.target.value);
-  //   setday(parseInt(e.target.value));
-  // };
   const handleEdit = () => {
     setCheckCalender(true);
     setdisplayResultsOrNot(false);
@@ -147,6 +165,59 @@ const Calci = () => {
         year[Pmonth].name
       } - ${ovulationDate()}`;
     }
+  };
+
+  const data = {
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    datasets: [
+      {
+        data: [36.2],
+        borderColor: "#9586c0",
+        backgroundColor: "#9586c0",
+        fill: false,
+        tension: 0.2, // For smooth curves
+        pointStyle: "circle",
+        pointRadius: 5,
+        pointHoverRadius: 8,
+      },
+    ],
+  };
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        display: false,
+        min: 36.0,
+        max: 37.0,
+        grid: {
+          display: false, // Hides the vertical grid lines
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false, // Disable the legend
+      },
+      tooltip: {
+        enabled: false, // Disable the tooltip
+      },
+      datalabels: {
+        display: true, // Show data labels
+        align: "top", // Position above the points
+        formatter: (value) => {
+          console.log(value);
+
+          return value;
+        }, // Format the value (y coordinate)
+      },
+    },
   };
 
   return (
@@ -345,24 +416,33 @@ const Calci = () => {
               Here are the results :
             </p>
 
-            <div className="border border-black mb-3  text-xl pb-4 font-semibold text-blue-900 flex flex-col items-center  pl-2 pr-2 rounded-lg">
+            <div className=" mb-3  text-xl pb-4 font-semibold text-blue-900 flex flex-col items-center  pl-2 pr-2 rounded-lg">
               <p className="helvica-font text-sm text-black ">
                 {fertileDate()}
               </p>
-              <div className="w-64 bg-pink-100 h-64 rounded-full text-white flex justify-center items-center ">
+              <div className=" cricle-animate w-64 bg-pink-100 h-64 rounded-full text-white flex justify-center items-center ">
                 <div className="w-56 bg-pink-200 h-56 rounded-full text-white flex justify-center items-center">
                   <div className="w-48 bg-pink-300 h-48 rounded-full text-white flex justify-center items-center ">
                     {/* main div */}
                     <div className="w-40 bg-pink-500 h-40 rounded-full text-white flex justify-center items-center">
                       <div className="text-center">
-                        <p className="text-3xl font-semibold">PEAK</p>
-                        <p>FERTILITY</p>
+                        <p className="text-4xl font-semibold">PEAK</p>
+                        <p className="text-2xl">Fertility</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* ***************************************** */}
+
+              {/* Graph-div */}
+              <div className=" w-full h-36 mb-5">
+                <Line data={data} options={options} />
+              </div>
             </div>
+
+            {/* ***************************************** */}
 
             <div className="pt-serif-caption bg-[#9f86C0] mb-3 h-20 text-xl font-semibold text-white flex flex-col justify-center pl-2 pr-2 rounded-lg">
               Approximate ovulation
@@ -383,22 +463,6 @@ const Calci = () => {
           </div>
         )}
       </div>
-
-      {/* Graph-div */}
-      {/* <div className="flex justify-center mt-0 pl-3 pr-3 mb-20">
-        {true && (
-          <div className="w-full  rounded-xl p-2 duration-1000" id="hero-box">
-            <h2 className="font-medium text-gray-400 text-lg mt-1">
-              OVERVIEW GRAPH
-            </h2>
-            <h1 className="text-3xl font-semibold text-blue-700 mb-3">GRAPH</h1>
-            <p className="ml-1 text-md font-semibold text-black mb-3 ">
-              This graph can give you a more clearer understanding for your
-              cycle.
-            </p>
-          </div>
-        )}
-      </div> */}
     </>
   );
 };
