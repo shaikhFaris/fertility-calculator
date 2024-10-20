@@ -201,7 +201,7 @@ const Calci = () => {
     labels: xCords,
     datasets: [
       {
-        data: [],
+        data: [1, 1.1, 1.5, 2.5, 5, 5.9],
         borderColor: "#9586c0",
         backgroundColor: "#9586c0",
         fill: false,
@@ -219,13 +219,19 @@ const Calci = () => {
       y: {
         beginAtZero: true,
         display: false,
-        min: 36.0,
-        max: 37.0,
+        max: 7,
         grid: {
           display: false, // Hides the vertical grid lines
         },
       },
       x: {
+        ticks: {
+          color: "#231942",
+          font: {
+            size: 12,
+            weight: "800",
+          },
+        },
         beginAtZero: false,
         grid: {
           display: false,
@@ -240,13 +246,34 @@ const Calci = () => {
         enabled: false, // Disable the tooltip
       },
       datalabels: {
+        color: (index) => {
+          // console.log(index);
+
+          if (index.dataIndex == 5) {
+            return "#9586c0";
+          }
+          return "#231942";
+        },
+        font: {
+          size: 12,
+          weight: 900,
+        },
         display: true, // Show data labels
         align: "top", // Position above the points
         formatter: (value) => {
           console.log(value);
-
-          return value;
-        }, // Format the value (y coordinate)
+          if (value == 1) {
+            return "   LOW";
+          }
+          if (value <= 1.5) {
+            return "LOW";
+          }
+          if (value > 1.5 && value < 5.9) {
+            return "HIGH";
+          } else {
+            return "PEAK    ";
+          }
+        },
       },
     },
   };
@@ -443,15 +470,12 @@ const Calci = () => {
             <h1 className="pt-serif-caption text-3xl font-semibold text-[#231942] mb-3">
               RESULTS
             </h1>
-            <p className="ml-1 text-md font-semibold text-black mb-3 ">
+            {/* <p className="ml-1 text-md font-semibold text-black mb-3 ">
               Here are the results :
-            </p>
+            </p> */}
 
-            <div className=" mb-3  text-xl pb-4 font-semibold text-blue-900 flex flex-col items-center  pl-2 pr-2 rounded-lg">
-              <p className="helvica-font text-sm text-black ">
-                {fertileDate()}
-              </p>
-              <div className=" cricle-animate w-64 bg-pink-100 h-64 rounded-full text-white flex justify-center items-center ">
+            <div className="mt-12 mb-3 text-xl pb-4 font-semibold text-blue-900 flex flex-col items-center  pl-2 pr-2 rounded-lg">
+              <div className="cricle-animate w-64 bg-pink-100 h-64 rounded-full text-white flex justify-center items-center ">
                 <div className="w-56 bg-pink-200 h-56 rounded-full text-white flex justify-center items-center">
                   <div className="w-48 bg-pink-300 h-48 rounded-full text-white flex justify-center items-center ">
                     {/* main div */}
@@ -468,9 +492,12 @@ const Calci = () => {
               {/* ***************************************** */}
 
               {/* Graph-div */}
-              <div className=" w-full h-36 mb-5">
+              <div className=" w-full h-36 mb-2 mt-8 ">
                 <Line data={data} options={options} />
               </div>
+              <p className="helvica-font text-sm text-black ">
+                {fertileDate()}
+              </p>
             </div>
 
             {/* ***************************************** */}
