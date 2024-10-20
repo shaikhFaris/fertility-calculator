@@ -427,7 +427,7 @@ const Calci = () => {
               {CheckBtn ? (
                 <div className="w-full flex items-center justify-evenly">
                   <button
-                    className="bg-blue-600 mt-5 mb-5 rounded-md w-3/6 h-14 text-white font-bold  hover:bg-blue-800 duration-200 text-xl "
+                    className="bg-[#9586C0] mt-5 mb-5 rounded-md w-3/6 h-14 text-white font-bold  hover:bg-blue-800 duration-200 text-xl "
                     type="submit"
                   >
                     Calculate
@@ -475,12 +475,12 @@ const Calci = () => {
             </p> */}
 
             <div className="mt-12 mb-3 text-xl pb-4 font-semibold text-blue-900 flex flex-col items-center  pl-2 pr-2 rounded-lg">
-              <div className="cricle-animate w-64 bg-pink-100 h-64 rounded-full text-white flex justify-center items-center ">
-                <div className="w-56 bg-pink-200 h-56 rounded-full text-white flex justify-center items-center">
-                  <div className="w-48 bg-pink-300 h-48 rounded-full text-white flex justify-center items-center ">
+              <div className="cricle-animate w-64 bg-[#dad2f1] h-64 rounded-full text-white flex justify-center items-center ">
+                <div className="w-56 bg-[#cfc5ef] h-56 rounded-full text-white flex justify-center items-center">
+                  <div className="w-48 bg-[#b8a9e1] h-48 rounded-full text-white flex justify-center items-center ">
                     {/* main div */}
-                    <div className="w-40 bg-pink-500 h-40 rounded-full text-white flex justify-center items-center">
-                      <div className="text-center">
+                    <div className="w-40 bg-[#9586c0] h-40 rounded-full text-white flex justify-center items-center">
+                      <div className="text-center pt-serif-caption">
                         <p className="text-4xl font-semibold">PEAK</p>
                         <p className="text-2xl">fertility</p>
                       </div>
@@ -504,7 +504,7 @@ const Calci = () => {
 
             <div className="pt-serif-caption bg-[#9f86C0] mb-3 h-20 text-xl font-semibold text-white flex flex-col justify-center pl-2 pr-2 rounded-lg">
               Approximate ovulation
-              <p className="helvica-font text-sm text-black ">
+              <p className="helvica-font text-sm text-white ">
                 {ovulationDate()}
               </p>
             </div>
@@ -514,7 +514,7 @@ const Calci = () => {
             </div>
             <div className="pt-serif-caption bg-[#595489] mb-8 h-20 text-xl font-semibold text-white flex flex-col justify-center pl-2 pr-2 rounded-lg ">
               Pregnancy Test Day
-              <p className="helvica-font text-sm text-black ">
+              <p className="helvica-font text-sm text-white ">
                 {pregnancyTestDate()}
               </p>
             </div>
