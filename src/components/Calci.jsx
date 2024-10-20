@@ -33,7 +33,7 @@ ChartJS.register(
 const Calci = () => {
   const [displayResultsOrNot, setdisplayResultsOrNot] = useState(false);
   const [day, setday] = useState(28);
-
+  const [xCords, setxCords] = useState([]);
   const [CheckBtn, setCheckBtn] = useState(false);
   const [CheckCalender, setCheckCalender] = useState(true);
   const [Pday, setPday] = useState(0);
@@ -55,6 +55,7 @@ const Calci = () => {
   const handleAfterChange = (e) => {
     console.log(`days=${e + 25}`);
     setday(e + 25);
+    setCheckBtn(true);
   };
 
   const year = [
@@ -74,7 +75,7 @@ const Calci = () => {
   ];
 
   const HandleCalenderChange = (e) => {
-    console.log(e.getMonth());
+    // console.log(e.getMonth());
     setPday(e.toString().slice(8, 10));
     setPmonth(e.getMonth());
   };
@@ -94,8 +95,37 @@ const Calci = () => {
   useEffect(() => {
     if (Pday != 0) {
       setCheckBtn(true);
+      // console.log("pday= " + Pday);
+      let s = parseInt(fertileDate().match(/\d+/g)[0]);
+      let e = parseInt(fertileDate().match(/\d+/g)[1]);
+      console.log(fertileDate());
+
+      const tempArr = [];
+      if (s < e) {
+        for (let i = s; i <= e; i++) {
+          // console.log(i + "");
+          tempArr.push(i);
+        }
+      } else {
+        let sMonthIndex = year.findIndex(
+          (element) => element.name === fertileDate().slice(3, 6)
+        );
+        // console.log(sMonthIndex);
+
+        for (let i = s; i <= year[sMonthIndex].days; i++) {
+          // console.log(i + "");
+          tempArr.push(i);
+        }
+        for (let i = 1; i <= e; i++) {
+          // console.log(i + "");
+          tempArr.push(i);
+        }
+      }
+      // console.log(tempArr);
+
+      setxCords(tempArr);
     }
-  }, [Pday]);
+  }, [Pday, day]);
 
   const periodDate = () => {
     if (
@@ -114,7 +144,7 @@ const Calci = () => {
         year[Pmonth + 1].name
       }`;
     } else {
-      console.log(parseInt(Pday) + parseInt(day));
+      // console.log(parseInt(Pday) + parseInt(day));
 
       return `${parseInt(Pday) + parseInt(day)} ${year[Pmonth].name}`;
     }
@@ -137,7 +167,7 @@ const Calci = () => {
         year[Pmonth + 1].name
       }`;
     } else {
-      console.log(parseInt(Pday) + parseInt(day));
+      // console.log(parseInt(Pday) + parseInt(day));
 
       return `${parseInt(Pday) + parseInt(day) + 1} ${year[Pmonth].name}`;
     }
@@ -168,10 +198,10 @@ const Calci = () => {
   };
 
   const data = {
-    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    labels: xCords,
     datasets: [
       {
-        data: [36.2],
+        data: [],
         borderColor: "#9586c0",
         backgroundColor: "#9586c0",
         fill: false,
@@ -196,6 +226,7 @@ const Calci = () => {
         },
       },
       x: {
+        beginAtZero: false,
         grid: {
           display: false,
         },
@@ -427,7 +458,7 @@ const Calci = () => {
                     <div className="w-40 bg-pink-500 h-40 rounded-full text-white flex justify-center items-center">
                       <div className="text-center">
                         <p className="text-4xl font-semibold">PEAK</p>
-                        <p className="text-2xl">Fertility</p>
+                        <p className="text-2xl">fertility</p>
                       </div>
                     </div>
                   </div>
