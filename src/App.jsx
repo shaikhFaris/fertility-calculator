@@ -9,7 +9,7 @@ import Calci from "./components/Calci";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <Calci />
     </>

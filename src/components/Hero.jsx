@@ -7,7 +7,7 @@ const Hero = () => {
         <h2 className="font-medium text-gray-400 text-lg mt-1">
           HEATH AND PREGNANCY
         </h2>
-        <h1 className="text-3xl font-semibold text-blue-700 mb-3">
+        <h1 className=" pt-serif-caption text-3xl font-semibold text-[#231942] mb-3">
           Ovulution Calculator
         </h1>
         <p className="ml-1 text-sm font-normal text-black">

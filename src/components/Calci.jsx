@@ -156,17 +156,26 @@ const Calci = () => {
           <h2 className="font-medium text-gray-400 text-lg mt-1">
             FIND YOUR FERTILITY WINDOW
           </h2>
-          <h1 className="text-3xl font-semibold text-blue-700 mb-3">
+          <h1 className="pt-serif-caption text-3xl font-semibold text-[#231942] mb-3">
             Let's Start
           </h1>
-          <p className="ml-1 text-md font-semibold text-black mb-3 ">
+          <p className="ml-1 text-md  text-black mb-3 ">
             To start select the last day of your period.
           </p>
 
           <form onSubmit={HandleSubmit}>
             {CheckCalender && (
               <div>
-                <Calendar onChange={HandleCalenderChange} className="mb-5" />
+                <Calendar
+                  onChange={HandleCalenderChange}
+                  className="mb-5"
+                  tileClassName={(e) => {
+                    return Pday == e.date.toString().slice(8, 10) &&
+                      Pmonth == e.date.getMonth().toString()
+                      ? "Pday"
+                      : "tiles";
+                  }}
+                />
                 <p className="ml-1 text-md font-semibold text-black mb-3 ">
                   How long is your cycle ?
                 </p>
@@ -177,107 +186,107 @@ const Calci = () => {
                   afterChange={handleAfterChange}
                 >
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       25 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       26 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       27 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       28 days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       29 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       30 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       31 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       32 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       33 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       34 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       35 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       36 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       37 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       38 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       39 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       40 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       41 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       42 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       43 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       44 Days
                     </div>
                   </div>
                   <div className="h-[88px] cards p-1">
-                    <div className="balls bg-pink-300 h-full w-full flex items-center justify-center rounded-full">
+                    <div className="balls bg-[#9f86C0] text-white h-full w-full flex items-center justify-center rounded-full">
                       45 Days
                     </div>
                   </div>
@@ -329,27 +338,47 @@ const Calci = () => {
             <h2 className="font-medium text-gray-400 text-lg mt-1">
               CHECK YOUR RESULTS
             </h2>
-            <h1 className="text-3xl font-semibold text-blue-700 mb-3">
+            <h1 className="pt-serif-caption text-3xl font-semibold text-[#231942] mb-3">
               RESULTS
             </h1>
             <p className="ml-1 text-md font-semibold text-black mb-3 ">
               Here are the results :
             </p>
-            <div className="bg-blue-300 mb-3 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center  pl-2 pr-2 rounded-lg">
-              Fertility Window
-              <p className="text-sm text-black">{fertileDate()}</p>
+
+            <div className="border border-black mb-3  text-xl pb-4 font-semibold text-blue-900 flex flex-col items-center  pl-2 pr-2 rounded-lg">
+              <p className="helvica-font text-sm text-black ">
+                {fertileDate()}
+              </p>
+              <div className="w-64 bg-pink-100 h-64 rounded-full text-white flex justify-center items-center ">
+                <div className="w-56 bg-pink-200 h-56 rounded-full text-white flex justify-center items-center">
+                  <div className="w-48 bg-pink-300 h-48 rounded-full text-white flex justify-center items-center ">
+                    {/* main div */}
+                    <div className="w-40 bg-pink-500 h-40 rounded-full text-white flex justify-center items-center">
+                      <div className="text-center">
+                        <p className="text-3xl font-semibold">PEAK</p>
+                        <p>FERTILITY</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-green-300 mb-3 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center pl-2 pr-2 rounded-lg">
+
+            <div className="pt-serif-caption bg-[#9f86C0] mb-3 h-20 text-xl font-semibold text-white flex flex-col justify-center pl-2 pr-2 rounded-lg">
               Approximate ovulation
-              <p className="text-sm text-black">{ovulationDate()}</p>
+              <p className="helvica-font text-sm text-black ">
+                {ovulationDate()}
+              </p>
             </div>
-            <div className="bg-pink-300 mb-3 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center  pl-2 pr-2 rounded-lg">
+            <div className="pt-serif-caption bg-[#be95c4] mb-3 h-20 text-xl font-semibold text-black flex flex-col justify-center  pl-2 pr-2 rounded-lg">
               Next Period
-              <p className="text-sm text-black">{periodDate()}</p>
+              <p className="helvica-font text-sm text-black ">{periodDate()}</p>
             </div>
-            <div className="bg-yellow-200 mb-8 h-20 text-xl font-semibold text-blue-900 flex flex-col justify-center pl-2 pr-2 rounded-lg ">
+            <div className="pt-serif-caption bg-[#595489] mb-8 h-20 text-xl font-semibold text-white flex flex-col justify-center pl-2 pr-2 rounded-lg ">
               Pregnancy Test Day
-              <p className="text-sm text-black">{pregnancyTestDate()}</p>
+              <p className="helvica-font text-sm text-black ">
+                {pregnancyTestDate()}
+              </p>
             </div>
           </div>
         )}
