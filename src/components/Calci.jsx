@@ -55,7 +55,7 @@ const Calci = () => {
   const handleAfterChange = (e) => {
     console.log(`days=${e + 25}`);
     setday(e + 25);
-    setCheckBtn(true);
+    // setCheckBtn(true);
   };
 
   const year = [
@@ -279,9 +279,9 @@ const Calci = () => {
   };
 
   return (
-    <>
+    <div className="flex-col justify-center items-center">
       <div className="flex justify-center mt-10 pl-3 pr-3 mb-10">
-        <div className="w-full  rounded-xl p-2" id="hero-box">
+        <div className="w-full rounded-xl p-2 " id="hero-box">
           <h2 className="font-medium text-gray-400 text-lg mt-1">
             FIND YOUR FERTILITY WINDOW
           </h2>
@@ -297,7 +297,7 @@ const Calci = () => {
               <div>
                 <Calendar
                   onChange={HandleCalenderChange}
-                  className="mb-5"
+                  className="mb-5 border "
                   tileClassName={(e) => {
                     return Pday == e.date.toString().slice(8, 10) &&
                       Pmonth == e.date.getMonth().toString()
@@ -521,7 +521,7 @@ const Calci = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

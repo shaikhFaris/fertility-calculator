@@ -8,9 +8,9 @@ body{
 }
 .react-calendar {
     border: none !important;
-    /* background-color:red  !important; */
-    /* background-color: #; */
-    
+    width: 100% !important;
+    color: black !important;
+
 }
 
 .Pday {
@@ -63,10 +63,10 @@ box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px
     background-color: rgb(255, 255, 255) !important;
     border-radius: 8px;
     height: 50px !important;
+    color: black !important;
     width: 50px !important;
 }
 .react-calendar__navigation__arrow   {
-    /* color: whi; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
     font-size: 25px;
 }
